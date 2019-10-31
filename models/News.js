@@ -22,6 +22,11 @@ var NewsSchema = new Schema({
     type: String,
     required: true
   },
+  // date is required 
+  storyDate: {
+    type: String,
+    required: true
+  },
   // `comments` is and array of objects that stores comment id(s)
   // The ref property links the ObjectId to the comment model
   // This allows us to populate the News with an associated comments

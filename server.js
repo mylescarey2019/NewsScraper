@@ -38,13 +38,13 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Get database  - deployed or local
-var db = process.env.MONGODB_URI || "mongodb://localhost/blogs";
+var db = process.env.MONGODB_URI || "mongodb://localhost/newsarticles";
 // Connect to the Mongo DB
 mongoose.connect(db, { useNewUrlParser: true }, function(error) {
   if (error) {
     console.log(error)
   } else {
-    console.log("mongoose sucessful connection")
+    console.log("mongoose successful connection")
   };
 });
 

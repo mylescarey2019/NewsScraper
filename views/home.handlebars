@@ -8,7 +8,7 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
           <li><a href="/saved">Stories</a></li>
-          <li><button id="next-set" type="button" class="btn btn-light">Refresh Stories</button></li>
+          <li><button id="re-scrape" type="button" class="btn btn-light">Refresh Stories</button></li>
         </ul>
       </div>
     </nav>
@@ -18,4 +18,23 @@
       <h2><i>LA Times Stories</i></h2>
       <div id="articles"></div>
       <div id="notes"></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8">
+          <div class="jumbotron">
+            <h1 >News Stories</h1>
+            <div class="table-grid">
+              {{#each newsStories}}
+                {{> newsStories/newsStory-item}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="jumbotron">
+            <h1 >comments will go here</h1>
+          </div>
+        </div>
+      </div>
     </div>

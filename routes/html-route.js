@@ -15,19 +15,24 @@ module.exports = function (router) {
 
   // select all orders and render on home page
   router.get("/", function(req,res) {
-    // simply render something for testing purposes
-    res.render("home",{greeting: "Hello Word"});
 
-    // // model call to retrieve all the blogposts
-    // foodorder.all(function(data) {
-    //   var hbsObject = {
-    //     orders: data
-    //   };
-    //   console.table(data);
-    //   res.render("index", hbsObject);
-    //   // // simply render something for testing purposes
-    //   // res.render("index",{greeting: "Hello Word"});
-    // });
-  });
+
+    // get all news stories from db
+    db.News.find({}).sort({ '_id': -1 })
+      .then(function(dbNews) {
+      // render home page with data via handlebars
+      var hbsObject = {
+          newsStories: dbNews
+      };
+        console.table(JSON.stringify(dbNews));
+        res.render("home", hbsObject);
+        // // simply render something for testing purposes
+        // res.render("home",{greeting: "Hello Word"});
+      })
+      .catch(function(err) {
+        // If an error occurs, console.log it
+        console.log(err);
+      });
+    });
 
 };  // end of module export
