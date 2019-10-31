@@ -12,6 +12,16 @@ var PORT = 3001;
 // Initialize Express
 var app = express();
 
+
+// Set up Router
+var router = express.Router();
+
+// Routes
+// =============================================================
+require("./routes/html-route.js")(router);
+require("./routes/scrape-api-route.js")(router);
+require("./routes/news-api-routes.js")(router);
+
 // Configure middleware
 
 // Use morgan logger for logging requests
@@ -27,15 +37,23 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Get database  - deployed or local
+var db = process.env.MONGODB_URI || "mongodb://localhost/blogs";
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/blogs", { useNewUrlParser: true });
+mongoose.connect(db, { useNewUrlParser: true }, function(error) {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log("mongoose sucessful connection")
+  };
+});
+
+
 mongoose.set('useCreateIndex', true);
 
-// Routes
-// =============================================================
-require("./routes/html-route.js")(app);
-require("./routes/scrape-api-route.js")(app);
-require("./routes/blogpost-api-routes.js")(app);
+
+// user router
+app.use(router);
 
 
 // Start the server

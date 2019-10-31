@@ -10,7 +10,7 @@ var db = require("../models");
 // Routes
 // =============================================================
 
-module.exports = function (app) {
+module.exports = function (router) {
 
   // // Route for getting all Articles from the db
   // app.get("/articles", function(req, res) {

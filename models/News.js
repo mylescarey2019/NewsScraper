@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
-var BlogPostSchema = new Schema({
+var NewsSchema = new Schema({
   // `title` is required and of type String
   headline: {
     type: String,
@@ -24,7 +24,7 @@ var BlogPostSchema = new Schema({
   },
   // `comments` is and array of objects that stores comment id(s)
   // The ref property links the ObjectId to the comment model
-  // This allows us to populate the BlogPost with an associated comments
+  // This allows us to populate the News with an associated comments
   comments: [
       {
         type: Schema.Types.ObjectId,
@@ -34,7 +34,7 @@ var BlogPostSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var BlogPost = mongoose.model("BlogPost", BlogPostSchema);
+var News = mongoose.model("News", NewsSchema);
 
-// Export the BlogPost model
-module.exports = BlogPost;
+// Export the News model
+module.exports = News;

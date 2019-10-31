@@ -11,12 +11,12 @@ var db = require("../models");
 // Routes
 // =============================================================
 
-module.exports = function (app) {
+module.exports = function (router) {
 
   // select all orders and render on home page
-  app.get("/", function(req,res) {
+  router.get("/", function(req,res) {
     // simply render something for testing purposes
-    res.render("index",{greeting: "Hello Word"});
+    res.render("home",{greeting: "Hello Word"});
 
     // // model call to retrieve all the blogposts
     // foodorder.all(function(data) {

@@ -14,28 +14,28 @@ var cheerio = require("cheerio");
 // Routes
 // =============================================================
 
-module.exports = function (app) {
+module.exports = function (router) {
 
   // A GET route for scraping the website
-  app.get("/api/scrape", function(req, res) {
+  router.get("/api/scrape", function(req, res) {
     // First, we grab the body of the html with axios
     axios.get("https://www.latimes.com").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
-      var blogCount = 0;
+      var newsCount = 0;
       // Now, we grab every h2 within an article tag, and do the following:
       $("div.PromoSmall-content").each(function(i,element) {
         // Save an empty result object
         
         var result = {};
-        blogCount++;
-        if (blogCount > 20) {
+        newsCount++;
+        if (newsCount > 20) {
           return false;
         };
 
           //div.PromoSmall-titleContainer a
           result.headline = $(element).find('div.PromoSmall-title a').text();
-          console.log(`CT: ${blogCount} TITLE: ${result.headline}`);
+          console.log(`CT: ${newsCount} TITLE: ${result.headline}`);
           result.summary = $(element).find('div.PromoSmall-description').text();
           console.log(`SUMMARY: ${result.summary}`);
           result.link = $(element).find('div.PromoSmall-title a').attr('href');
@@ -52,11 +52,11 @@ module.exports = function (app) {
             // console.log(result.title);
             // console.log(result.link);
 
-            // Create a new BlogPost using the `result` object built from scraping
-            db.BlogPost.create(result)
-              .then(function(dbBlogPost) {
+            // Create a new News using the `result` object built from scraping
+            db.News.create(result)
+              .then(function(dbNews) {
                 // View the added result in the console
-                console.log(dbBlogPost);
+                console.log(dbNews);
               })
               .catch(function(err) {
                 // If an error occurred, log it
