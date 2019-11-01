@@ -19,36 +19,48 @@ $(function() {
   // Comment click event - query for comments
   $(".comment-btn").on("click", function(event) {
     console.log("In comment-btn  click");
-    // remove comments from previous active story (if there is one)
-    $(".story-comment, .add-comment-btn, .add-comment-input").remove();
-
-
-    // render comments (if there are any) for this story
-    var id = $(this).data("story-id");
+    // get the story id
+    var storyId = $(this).data("story-id");
     var endOfStoryElem = $(this).prev();
-    console.log(`Story ID is: ${id}`);
+    console.log(`Story ID is: ${storyId}`);
 
-    // call the get comments route
-    $.ajax(`/api/story-comments/${id}`, {
-      type: "GET"
-    }).then(res => {
-        console.log(JSON.stringify(res));
-        res.map(comment => {
-          console.log(comment._id);
-          console.log(comment.body);
-          delBtn = $(`<button class="btn btn-danger btn-sm comment-del-btn" data-comment-id="${comment._id}">Delete</button>`);
-          // prevElem.append(delBtn);
-          endOfStoryElem.append(`<p class="story-comment" data-comment-id="${comment._id}"><span></>${comment.body}`);
-          var spanTarget = $(".story-comment:last span");
-          spanTarget.prepend(delBtn);
-        });
-        
-        // render the Add comment form
-        endOfStoryElem.append(`<div>`);
-        endOfStoryElem.append(`<button class="btn btn-success btn-sm add-comment-btn">Add</button>`);
-        endOfStoryElem.append(`<textarea class="add-comment-input" name='body'></textarea>`);
-      }
-    );
+    // toggle activity - if clicked and there are story comment rendered
+    // on this story then remove them - i.e. treat click as a collapse function
+    // $(`[data-story-id]:not(.comment-btn`).remove();
+    $(".comment-dispose").remove();
+
+    // var elCt = $(`[data-story-id]:not(.comment-btn`).length;
+    // console.log(`elemCt: ${elCt}`);
+
+    // if ($(`[data-story-id="${storyId}"]:not(.comment-btn)`).length) {
+    //   $(`[data-story-id="${storyId}"]:not(.comment-btn`).remove();
+    // } else {
+    //   // // remove controls from previous active story (if there is one)
+    //   $(`[data-story-id="${storyId}"]:not(.comment-btn`).remove();
+
+      // render comments (if there are any) for this story
+      // call the get comments route
+      $.ajax(`/api/story-comments/${storyId}`, {
+        type: "GET"
+      }).then(res => {
+          console.log(JSON.stringify(res));
+          res.map(comment => {
+            console.log(comment._id);
+            console.log(comment.body);
+            delBtn = $(`<button class="btn btn-danger btn-sm comment-del-btn comment-dispose" data-comment-id="${comment._id}">Delete</button>`);
+            // prevElem.append(delBtn);
+            endOfStoryElem.append(`<p class="story-comment comment-dispose" data-story-id="${storyId}" data-comment-id="${comment._id}"><span></>${comment.body}`);
+            var spanTarget = $(".story-comment:last span");
+            spanTarget.prepend(delBtn);
+          });
+          
+          // render the Add comment form
+          endOfStoryElem.append(`<div>`);
+          endOfStoryElem.append(`<button class="btn btn-success btn-sm add-comment-btn comment-dispose" data-story-id="${storyId}">Add</button>`);
+          endOfStoryElem.append(`<textarea class="add-comment-input comment-dispose" name='body' data-story-id="${storyId}"></textarea>`);
+        }
+      );
+    // };
   });
 
 
