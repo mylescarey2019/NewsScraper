@@ -30,13 +30,15 @@
   margin-bottom: 6px;
 }
 
+.date-line {
+  margin-bottom: 10px;
+}
 .story-date {
   display:  inline;
  }
 
 .story-link {
   margin-left: 20px;
-  margin-bottom: 30px;
 }
 
 .story-id{
@@ -59,11 +61,13 @@
 }
 
 .story-comment {
-  line-height: 1.5em;
+  /* line-height: 1.5em; */
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 .add-comment-btn {
-  margin: 0px 10px 80px 10px;
+  margin: -70px 10px 0px 10px;
   width: 60px; 
   /* display: block; */
   margin-right: 10px;
@@ -75,5 +79,5 @@
   overflow: scroll;
   padding: 5px;
   border-radius: 5px;
-  /* float: left; */
+  margin: 10px 0px 10px 0px;
 }

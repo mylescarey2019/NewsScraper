@@ -51,6 +51,26 @@ $(function() {
     );
   });
 
+
+  // delete comment click event
+  $(document).on("click", ".comment-del-btn", function() {
+    console.log("In comment delete click");
+    var commentId = $(this).data("comment-id");
+    console.log(`you clicked delete for ${commentId}`)
+
+    // call the delete route
+    $.ajax(`/api/story-comment/${commentId}`, {
+      type: "DELETE"
+    }).then(
+      function() {
+        console.log("comment deleted");
+        // remove from DOM
+        $(`.story-comment[data-comment-id="${commentId}"]`).remove();
+      }
+    );
+  });
+
+    
   // // add comment click event
   // $(document).on("click", ".comment-del-btn", function() {
   //   console.log("In comment delete click");
@@ -69,7 +89,26 @@ $(function() {
   //   );
   // });
 
+  
 
+//   //  click event for comment delete 
+//   $(".comment-del-btn").on("click", function(event) {
+//     console.log("In comment delete click");
+//     var commentId = $(this).data("comment-id");
+//     console.log(`you clicked delete for ${commentId}`)
+
+//   //   // call the delete route
+//   //   $.ajax("/api/scrape", {
+//   //     type: "GET"
+//   //   }).then(
+//   //     function() {
+//   //       console.log("re-scraped");
+//   //       // Reload the page to get the updated list
+//   //       location.reload();
+//   //     }
+//   //   );
+
+//  });
 
 
 });  // DOM Ready

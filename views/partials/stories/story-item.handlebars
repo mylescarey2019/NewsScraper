@@ -7,12 +7,14 @@
   <p class="summary">
     {{summary}}
   </p>
-  <p class="story-date">
-    {{storyDate}}
-  </p>
-  <a class="story-link" href="{{link}}" target="_blank">LA Times Story Link</a>
-  <p class="story-id">ID:
+  <div>
+    <p class="story-date">
+      {{storyDate}}
+    </p>
+    <a class="story-link" href="{{link}}" target="_blank">LA Times Story Link</a>
+  </div>
+  {{!-- <p class="story-id">ID: 
     {{_id}}
-  </p>
+  </p> --}}
   <button type="button" class="btn btn-primary comment-btn" data-story-id="{{_id}}">Comments</button>
 </div>
