@@ -47,30 +47,29 @@ $(function() {
         endOfStoryElem.append(`<div>`);
         endOfStoryElem.append(`<button class="btn btn-success btn-sm add-comment-btn">Add</button>`);
         endOfStoryElem.append(`<textarea class="add-comment-input" name='body'></textarea>`);
-        
-
-
-
-
       }
     );
-
-    // $("#notes").append("<h2>" + data.title + "</h2>");
-    // $("#notes").append("<input id='titleinput' name='title' >");
-    // $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-    // $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-    // if (data.notes) {
-    //   const notes = data.notes;
-    //   for (let i = 0; i < notes.length; i++) {
-    //     let noteTitle = $("<div id='bodyinput'>").text(notes[i].title)
-    //     let noteBody = $("<p class='note'>").text(`- ${notes[i].body}`)
-    //     noteTitle.append(noteBody);
-    //     $("#notes").append(noteTitle);
-    //   }
-    // }
-
-
-
   });
 
-});
+  // // add comment click event
+  // $(document).on("click", ".comment-del-btn", function() {
+  //   console.log("In comment delete click");
+  //   var commentId = $(this).data("comment-id");
+  //   console.log(`you clicked delete for ${commentId}`)
+
+  //   // call the delete route
+  //   $.ajax(`/api/story-comment/${commentId}`, {
+  //     type: "DELETE"
+  //   }).then(
+  //     function() {
+  //       console.log("comment deleted");
+  //       // remove from DOM
+  //       $(`.story-comment[data-comment-id="${commentId}"]`).remove();
+  //     }
+  //   );
+  // });
+
+
+
+
+});  // DOM Ready
