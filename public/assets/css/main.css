@@ -45,9 +45,9 @@
   margin-bottom: 0px;
 }
 
-/* .comment-btn {
-  margin-bottom: 5px;
-} */
+.comment-btn {
+  margin-top: 10px
+}
 
 #re-scrape {
   margin-right: 25px;
@@ -67,7 +67,7 @@
 }
 
 .add-comment-btn {
-  margin: -70px 10px 0px 10px;
+  margin: -95px 10px 0px 10px;
   width: 60px; 
   /* display: block; */
   margin-right: 10px;
@@ -77,7 +77,7 @@
   width: 90%;
   height: 80px;
   overflow: scroll;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   margin: 10px 0px 10px 0px;
 }
