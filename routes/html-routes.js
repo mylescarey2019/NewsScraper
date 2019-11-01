@@ -18,13 +18,13 @@ module.exports = function (router) {
 
 
     // get all news stories from db
-    db.News.find({}).sort({ '_id': -1 })
-      .then(function(dbNews) {
+    db.Story.find({}).sort({ '_id': -1 })
+      .then(function(dbStory) {
       // render home page with data via handlebars
       var hbsObject = {
-          newsStories: dbNews
+          stories: dbStory
       };
-        console.table(JSON.stringify(dbNews));
+        console.table(JSON.stringify(dbStory));
         res.render("home", hbsObject);
         // // simply render something for testing purposes
         // res.render("home",{greeting: "Hello Word"});

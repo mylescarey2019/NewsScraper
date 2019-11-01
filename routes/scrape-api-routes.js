@@ -22,22 +22,22 @@ module.exports = function (router) {
     axios.get("https://www.latimes.com").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
-      var newsCount = 0;
+      var storyCount = 0;
       // Now, we grab every h2 within an article tag, and do the following:
       $("div.PromoSmall-content").each(function(i,element) {
         // Save an empty result object
         
         var result = {};
         // only look through the first 30 articles returned
-        newsCount++;
-        if (newsCount > 5) {
+        storyCount++;
+        if (storyCount > 5) {
           return false;  // forces break out of from JQuery each method
         };
 
         // gather components of a new story post
 
         var headline = $(element).find('div.PromoSmall-title a').text();
-        console.log(`CT: ${newsCount} TITLE: ${headline}`);
+        console.log(`CT: ${storyCount} TITLE: ${headline}`);
         var summary = $(element).find('div.PromoSmall-description').text();
         console.log(`SUMMARY: ${summary}`);
         var link = $(element).find('div.PromoSmall-title a').attr('href');
@@ -51,11 +51,11 @@ module.exports = function (router) {
           result.summary = summary;
           result.link = link;
           result.storyDate = storyDate;
-          // Create a new News using the `result` object built from scraping
-          db.News.create(result)
-            .then(function(dbNews) {
+          // Create a new Story using the `result` object built from scraping
+          db.Story.create(result)
+            .then(function(dbStory) {
               // View the added result in the console
-              console.log(dbNews);
+              console.log(dbStory);
             })
             .catch(function(err) {
               // If an error occurred, log it
@@ -63,28 +63,7 @@ module.exports = function (router) {
             });
         };
         
-          // //div.PromoSmall-titleContainer a
-          // result.headline = $(element).find('div.PromoSmall-title a').text();
-          // console.log(`CT: ${newsCount} TITLE: ${result.headline}`);
-          // result.summary = $(element).find('div.PromoSmall-description').text();
-          // console.log(`SUMMARY: ${result.summary}`);
-          // result.link = $(element).find('div.PromoSmall-title a').attr('href');
-          // console.log(`LINK: ${result.link}`);
-            // Add the text and href of every link, and save them as properties of the result object
-            // result.title = 
-              // .find("a")
-              // .text();
-
-            // result.link = $(this).attr("href");
-            //   // .children("a")
-            //   // .attr("href");
-
-            // console.log(result.title);
-            // console.log(result.link);
-
-
-
-        });
+      });
 
       // Send a message to the client
       res.send("Scrape Complete");

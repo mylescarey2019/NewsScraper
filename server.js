@@ -18,9 +18,10 @@ var router = express.Router();
 
 // Routes
 // =============================================================
-require("./routes/html-route.js")(router);
-require("./routes/scrape-api-route.js")(router);
-require("./routes/news-api-routes.js")(router);
+require("./routes/html-routes.js")(router);
+require("./routes/scrape-api-routes.js")(router);
+require("./routes/story-api-routes.js")(router);
+require("./routes/comment-api-routes.js")(router);
 
 // Configure middleware
 

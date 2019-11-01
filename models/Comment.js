@@ -5,6 +5,12 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new CommentSchema object
 var CommentSchema = new Schema({
+  // id of the story the comment is attached to
+  _storyId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Story'
+  },
   // `title` is of type String
   title: String,
   // `body` is of type String
@@ -14,5 +20,5 @@ var CommentSchema = new Schema({
 // This creates our model from the above schema, using mongoose's model method
 var Comment = mongoose.model("Comment", CommentSchema);
 
-// Export the Note model
+// Export the Comment model
 module.exports = Comment;
