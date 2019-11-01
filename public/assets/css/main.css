@@ -43,9 +43,9 @@
   margin-bottom: 0px;
 }
 
-.comment-btn {
-  margin-bottom: 40px;
-}
+/* .comment-btn {
+  margin-bottom: 5px;
+} */
 
 #re-scrape {
   margin-right: 25px;
@@ -55,8 +55,25 @@
 
 .comment-del-btn {
   margin: 0px 10px 0px 10px;
+  width: 60px; 
 }
 
 .story-comment {
   line-height: 1.5em;
+}
+
+.add-comment-btn {
+  margin: 0px 10px 80px 10px;
+  width: 60px; 
+  /* display: block; */
+  margin-right: 10px;
+}
+
+.add-comment-input {
+  width: 90%;
+  height: 80px;
+  overflow: scroll;
+  padding: 5px;
+  border-radius: 5px;
+  /* float: left; */
 }

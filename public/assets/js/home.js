@@ -20,7 +20,8 @@ $(function() {
   $(".comment-btn").on("click", function(event) {
     console.log("In comment-btn  click");
     // remove comments from previous active story (if there is one)
-    $(".story-comment").remove();
+    $(".story-comment, .add-comment-btn, .add-comment-input").remove();
+
 
     // render comments (if there are any) for this story
     var id = $(this).data("story-id");
@@ -42,8 +43,12 @@ $(function() {
           spanTarget.prepend(delBtn);
         });
         
-        endOfStoryElem.append("<textarea id='bodyinput' name='body'></textarea>");
-        endOfStoryElem.append("<button data-id='" + data._id + "' id='savenote'>Add Comment</button>");
+        // render the Add comment form
+        endOfStoryElem.append(`<div>`);
+        endOfStoryElem.append(`<button class="btn btn-success btn-sm add-comment-btn">Add</button>`);
+        endOfStoryElem.append(`<textarea class="add-comment-input" name='body'></textarea>`);
+        
+
 
 
 
