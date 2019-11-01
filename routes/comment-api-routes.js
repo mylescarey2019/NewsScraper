@@ -27,6 +27,21 @@ module.exports = function (router) {
       });
   });
 
+  // Route for deleting a comment
+  router.delete("/api/story-comment/:id", function(req, res) {
+    // delete a comment
+    db.Comment.deleteOne({_id: req.params.id},)
+      .then(function(delelteResult) {
+        // If we were able to successfully delete the comment
+        console.log(JSON.stringify(deleteResult));
+        res(deleteResult);
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+  });
+
   // Route for saving a comment
   router.post("/api/story-comment", function(req, res) {
     // save comment to database

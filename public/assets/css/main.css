@@ -6,7 +6,7 @@
 }
 
 .headline {
-  cursor: pointer;
+  /* cursor: pointer; */
   clear: both;
 }
 
@@ -14,9 +14,20 @@
   font-size: 48px;
 }
 
+.jumbotron {
+  margin-top: 50px;
+}
+
+.story-div {
+  border: solid 2px #343a40;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 .summary {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.5em;
+  margin-bottom: 6px;
 }
 
 .story-date {
@@ -27,12 +38,25 @@
   margin-left: 20px;
   margin-bottom: 30px;
 }
-.story-id {
-  margin-bottom: 30px;
+
+.story-id{
+  margin-bottom: 0px;
+}
+
+.comment-btn {
+  margin-bottom: 40px;
 }
 
 #re-scrape {
   margin-right: 25px;
   width: 200px;
 
+}
+
+.comment-del-btn {
+  margin: 0px 10px 0px 10px;
+}
+
+.story-comment {
+  line-height: 1.5em;
 }
