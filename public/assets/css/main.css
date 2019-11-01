@@ -2,8 +2,37 @@
 #header {
   width: 100%;
   margin-left: auto;
+  margin-bottom: 20px;
 }
 
-h5:hover {
+.headline {
   cursor: pointer;
+  clear: both;
+}
+
+.navbar-brand {
+  font-size: 48px;
+}
+
+.summary {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.story-date {
+  display:  inline;
+ }
+
+.story-link {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+.story-id {
+  margin-bottom: 30px;
+}
+
+#re-scrape {
+  margin-right: 25px;
+  width: 200px;
+
 }

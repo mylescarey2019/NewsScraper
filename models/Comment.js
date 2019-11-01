@@ -11,8 +11,6 @@ var CommentSchema = new Schema({
     required: true,
     ref: 'Story'
   },
-  // `title` is of type String
-  title: String,
   // `body` is of type String
   body: String
 });
