@@ -7,7 +7,9 @@ var mongoose = require("mongoose");
 // Require all models
 var db = require("./models");
 
-var PORT = 3001;
+
+// Set the port of our application for use on Heroku and local 
+var PORT = process.env.PORT || 3001;
 
 // Initialize Express
 var app = express();
