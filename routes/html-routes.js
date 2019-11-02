@@ -6,8 +6,6 @@
 // =============================================================
 var db = require("../models");
 
-
-
 // Routes
 // =============================================================
 
@@ -24,14 +22,14 @@ module.exports = function (router) {
       var hbsObject = {
           stories: dbStory
       };
-        console.table(JSON.stringify(dbStory));
+        // console.table(JSON.stringify(dbStory));
         res.render("home", hbsObject);
         // // simply render something for testing purposes
         // res.render("home",{greeting: "Hello Word"});
       })
       .catch(function(err) {
         // If an error occurs, console.log it
-        console.log(err);
+        // console.log(err);
       });
     });
 

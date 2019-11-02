@@ -30,20 +30,20 @@ module.exports = function (router) {
         var result = {};
         // only look through the first 30 articles returned
         storyCount++;
-        if (storyCount > 5) {
+        if (storyCount > 20) {
           return false;  // forces break out of from JQuery each method
         };
 
         // gather components of a new story post
 
         var headline = $(element).find('div.PromoSmall-title a').text();
-        console.log(`CT: ${storyCount} TITLE: ${headline}`);
+        // console.log(`CT: ${storyCount} TITLE: ${headline}`);
         var summary = $(element).find('div.PromoSmall-description').text();
-        console.log(`SUMMARY: ${summary}`);
+        // console.log(`SUMMARY: ${summary}`);
         var link = $(element).find('div.PromoSmall-title a').attr('href');
-        console.log(`LINK: ${link}`);
+        // console.log(`LINK: ${link}`);
         var storyDate = $(element).find('div.PromoSmall-timestamp').attr('data-date');
-        console.log(`DATE: ${storyDate}`);
+        // console.log(`DATE: ${storyDate}`);
 
         // only save to DB if all 3 components were found for news story
         if (headline && summary && link && storyDate) {
@@ -55,11 +55,11 @@ module.exports = function (router) {
           db.Story.create(result)
             .then(function(dbStory) {
               // View the added result in the console
-              console.log(dbStory);
+              // console.log(dbStory);
             })
             .catch(function(err) {
               // If an error occurred, log it
-              console.log(err);
+              // console.log(err);
             });
         };
         

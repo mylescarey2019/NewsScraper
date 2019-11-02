@@ -28,15 +28,6 @@ var StorySchema
     type: String,
     required: true
   }
-  // // `comments` is and array of objects that stores comment id(s)
-  // // The ref property links the ObjectId to the comment model
-  // // This allows us to populate the News with an associated comments
-  // comments: [
-  //     {
-  //       type: Schema.Types.ObjectId,
-  //       ref: "Comment"
-  //     }
-  // ]    
 });
 
 // This creates our model from the above schema, using mongoose's model method

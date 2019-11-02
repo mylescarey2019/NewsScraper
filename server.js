@@ -22,7 +22,6 @@ var router = express.Router();
 // =============================================================
 require("./routes/html-routes.js")(router);
 require("./routes/scrape-api-routes.js")(router);
-require("./routes/story-api-routes.js")(router);
 require("./routes/comment-api-routes.js")(router);
 
 // Configure middleware
@@ -51,24 +50,10 @@ mongoose.connect(MONGODB_URI , { useNewUrlParser: true }, function(error) {
   };
 });
 
-// // Get database  - deployed or local
-// var db = process.env.MONGODB_URI || "mongodb://localhost/newsarticles";
-// // Connect to the Mongo DB
-// mongoose.connect(db, { useNewUrlParser: true }, function(error) {
-//   if (error) {
-//     console.log(error)
-//   } else {
-//     console.log("mongoose successful connection")
-//   };
-// });
-
-
 mongoose.set('useCreateIndex', true);
-
 
 // user router
 app.use(router);
-
 
 // Start the server
 app.listen(PORT, function() {
